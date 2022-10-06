@@ -1,13 +1,12 @@
-import abc.core.subjectarea.JInt
 import abc.core.subjectarea.RestAPIBase
 import abc.core.subjectarea.User
 import kotlinx.browser.document
 import kotlinx.browser.window
 import react.create
 import react.dom.client.createRoot
-import kotlin.js.Json
-import kotlinx.browser.window
 import kotlinx.coroutines.*
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
 
@@ -34,7 +33,13 @@ suspend fun main(args: Array<String>) {
     token = user.sessionToken
     val list = api.getEntityList(token,"User",0,0)
     val welcome = Welcome.create {
-        name = api.ip+" JInt="+user.sessionToken + list[0].jsonObject
+        var ss=""
+        val format = Json { ignoreUnknownKeys = true }
+        for (vv in list){
+            var user2 = format.decodeFromString<User>(vv.jsonObject)
+            ss += user2.firstName+"<br>"
+            }
+        name = api.ip+" JInt="+user.sessionToken+"<br>"+ss
 
         }
     createRoot(container).render(welcome)
