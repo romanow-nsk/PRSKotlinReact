@@ -24,17 +24,18 @@ suspend fun keepAlive2(token:String): String {
         .await()
     return response
     }
-
+var token:String=""
 suspend fun main(args: Array<String>) {
     val container = document.createElement("div")
     document.body!!.appendChild(container)
-    val user = User()
-    println(user)
     val api:RestAPIBase  = RestAPIBase()
-    val token = "123345666"
-    val ss = api.keepalive(token)
+    val ss = api.keepalive("1111111")
+    val user = api.login("9136666666","1234")
+    token = user.sessionToken
+    val list = api.getEntityList(token,"User",0,0)
     val welcome = Welcome.create {
-        name = api.ip+" JInt="+ss.value
+        name = api.ip+" JInt="+user.sessionToken + list[0].jsonObject
+
         }
     createRoot(container).render(welcome)
 }
