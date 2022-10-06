@@ -29,17 +29,21 @@ suspend fun main(args: Array<String>) {
     document.body!!.appendChild(container)
     val api:RestAPIBase  = RestAPIBase()
     val ss = api.keepalive("1111111")
-    val user = api.login("9136666666","1234")
-    token = user.sessionToken
-    val list = api.getEntityList(token,"User",0,0)
-    val welcome = Welcome.create {
-        var ss=""
+    val userPair = api.login("9136666666","1234")
+    var out = ""
+    if (userPair.first!=null)
+        out = userPair.first!!
+    else {
+        token = userPair.second!!.sessionToken
+        val list = api.getEntityList(token,"User",0,0)
         val format = Json { ignoreUnknownKeys = true }
-        for (vv in list){
+        for (vv in list.second!!){
             var user2 = format.decodeFromString<User>(vv.jsonObject)
-            ss += user2.firstName+"<br>"
+            out += user2.lastName+"_"+user2.firstName+" "
             }
-        name = api.ip+" JInt="+user.sessionToken+"<br>"+ss
+        }
+    val welcome = Welcome.create {
+        name = api.ip+" "+token+" "+out
 
         }
     createRoot(container).render(welcome)
