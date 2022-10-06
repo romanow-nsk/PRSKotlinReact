@@ -31,13 +31,13 @@ suspend fun main(args: Array<String>) {
     val ss = api.keepalive("1111111")
     val userPair = api.login("9136666666","1234")
     var out = ""
-    if (userPair.first!=null)
-        out = userPair.first!!
+    if (!userPair.valid())
+        out = userPair.mes
     else {
-        token = userPair.second!!.sessionToken
+        token = userPair.data!!.sessionToken
         val list = api.getEntityList(token,"User",0,0)
         val format = Json { ignoreUnknownKeys = true }
-        for (vv in list.second!!){
+        for (vv in list.data!!){
             var user2 = format.decodeFromString<User>(vv.jsonObject)
             out += user2.lastName+"_"+user2.firstName+" "
             }
