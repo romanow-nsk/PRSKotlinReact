@@ -3,7 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "1.7.10"
 }
 
-group = "org.example"
+group = "romanow.abc.prs.web"
 version = "1.0-SNAPSHOT"
 
 repositories {
