@@ -17,7 +17,7 @@ import org.w3c.fetch.RequestInit
 
 suspend fun keepAlive2(token:String): String {
     val response = window
-        .fetch("http://localhost:4567/api/keepalive", RequestInit("get",Headers().append("SessionToken",token)))
+        .fetch("http://localhost:5001/api/keepalive", RequestInit("get",Headers().append("SessionToken",token)))
         .await()
         .text()
         .await()
