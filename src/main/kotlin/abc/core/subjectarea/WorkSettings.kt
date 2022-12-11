@@ -17,5 +17,6 @@ class WorkSettings:Entity{
     var mailToSend:String=""
     var mailNotifycation:Boolean=false
     var nodeName:String=""
+    var traceLevel:Int=0
     constructor() {}
 }
