@@ -5,11 +5,11 @@ import kotlinx.serialization.json.Json
 
 @Serializable
 class SADiscipline:Entity{
-    var themes:EntityRefList<SATheme> = EntityRefList<SATheme>()
-    var rules:EntityRefList<SAExamRule> = EntityRefList<SAExamRule>()
-    var ratings:EntityRefList<SAGroupRating> = EntityRefList<SAGroupRating>()
-    var takings:EntityRefList<SAExamTaking> = EntityRefList<SAExamTaking>()
-    var units:EntityRefList<SAEduUnit> = EntityRefList<SAEduUnit>()
+    var themes:ArrayList<SATheme> = ArrayList<SATheme>()
+    var rules:ArrayList<SAExamRule> = ArrayList<SAExamRule>()
+    var ratings:ArrayList<SAGroupRating> = ArrayList<SAGroupRating>()
+    var takings:ArrayList<SAExamTaking> = ArrayList<SAExamTaking>()
+    var units:ArrayList<SAEduUnit> = ArrayList<SAEduUnit>()
     var name:String=""
     var comment:String=""
     constructor() {}

@@ -1,4 +1,6 @@
 import abc.core.subjectarea.RestAPIBase
+import abc.core.subjectarea.SADiscipline
+import abc.core.subjectarea.SAStudent
 import abc.core.subjectarea.User
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -37,11 +39,26 @@ suspend fun main(args: Array<String>) {
         out = userPair.mes
     else {
         token = userPair.data!!.sessionToken
-        val list = api.getEntityList(token,"User",0,0)
         val format = Json { ignoreUnknownKeys = true }
+        /*
+        var list = api.getEntityList(token,"User",0,0)
         for (vv in list.data!!){
             var user2 = format.decodeFromString<User>(vv.jsonObject)
             out += user2.lastName+"_"+user2.firstName+" "
+            }
+        var list2 = api.getEntityList(token,"SAStudent",0,0)
+        for (vv in list2.data!!){
+            var saStudent = format.decodeFromString<SAStudent>(vv.jsonObject)
+            out += "GroupId="+saStudent.SAGroup.oid+ " usetId="+saStudent.User.oid+"\n"
+            }
+         */
+        var list3 = api.getEntityList(token,"SADiscipline",0,2)
+        for (vv in list3.data!!){
+            out+= vv.className+" "+vv.jsonObject+" "
+            //var disc = format.decodeFromString<SADiscipline>(vv.jsonObject)
+            //out += "Темы="+disc.themes.size + " Уч.единицы=" +disc.units.size+"\n"
+            //for (theme in disc.themes)
+            //    out+=theme.name+" вопросов "+theme.tasks.size+"\n";
             }
         }
     val welcome = Welcome.create {

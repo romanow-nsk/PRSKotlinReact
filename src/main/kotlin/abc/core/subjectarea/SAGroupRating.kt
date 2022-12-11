@@ -9,10 +9,10 @@ class SAGroupRating:Entity{
     var examRule:EntityLink<SAExamRule> = EntityLink<SAExamRule>()
     var group:EntityLink<SAGroup> = EntityLink<SAGroup>()
     var semRule:EntityLink<SASemesterRule> = EntityLink<SASemesterRule>()
-    var examRatings:EntityRefList<SAExamRating> = EntityRefList<SAExamRating>()
-    var semRatings:EntityRefList<SASemesterRating> = EntityRefList<SASemesterRating>()
-    var events:EntityRefList<SAEvent> = EntityRefList<SAEvent>()
-    var teams:EntityRefList<SATeam> = EntityRefList<SATeam>()
+    var examRatings:ArrayList<SAExamRating> = ArrayList<SAExamRating>()
+    var semRatings:ArrayList<SASemesterRating> = ArrayList<SASemesterRating>()
+    var events:ArrayList<SAEvent> = ArrayList<SAEvent>()
+    var teams:ArrayList<SATeam> = ArrayList<SATeam>()
     var name:String=""
     var comment:String=""
     constructor() {}

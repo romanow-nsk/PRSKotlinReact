@@ -5,7 +5,7 @@ import kotlinx.serialization.json.Json
 
 @Serializable
 class SAGroup:Entity{
-    var students:EntityRefList<SAStudent> = EntityRefList<SAStudent>()
+    var students:ArrayList<SAStudent> = ArrayList<SAStudent>()
     var name:String=""
     var comment:String=""
     constructor() {}

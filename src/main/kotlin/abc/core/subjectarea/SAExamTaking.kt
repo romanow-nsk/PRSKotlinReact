@@ -11,7 +11,7 @@ class SAExamTaking:Entity{
     var SADiscipline:EntityLink<SADiscipline> = EntityLink<SADiscipline>()
     var oneGroup:Boolean=false
     var group:EntityLink<SAGroup> = EntityLink<SAGroup>()
-    var ratings:EntityRefList<SAExamRating> = EntityRefList<SAExamRating>()
+    var ratings:ArrayList<SAExamRating> = ArrayList<SAExamRating>()
     var state:Int=0
     constructor() {}
 }

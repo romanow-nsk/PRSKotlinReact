@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 class SAEvent:Entity{
     var SAGroupRating:EntityLink<SAGroupRating> = EntityLink<SAGroupRating>()
     var date:OwnDateTime=OwnDateTime()
-    var visits:EntityRefList<SAVisit> = EntityRefList<SAVisit>()
+    var visits:ArrayList<SAVisit> = ArrayList<SAVisit>()
     var eduUnit:EntityLink<SAEduUnit> = EntityLink<SAEduUnit>()
     var name:String=""
     var comment:String=""

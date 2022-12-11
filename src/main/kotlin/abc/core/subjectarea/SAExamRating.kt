@@ -11,7 +11,7 @@ class SAExamRating:Entity{
     var semRating:EntityLink<SASemesterRating> = EntityLink<SASemesterRating>()
     var questionRating:Int=0
     var excerciceRating:Int=0
-    var answers:EntityRefList<SAAnswer> = EntityRefList<SAAnswer>()
+    var answers:ArrayList<SAAnswer> = ArrayList<SAAnswer>()
     var state:Int=0
     constructor() {}
 }
