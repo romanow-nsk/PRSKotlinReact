@@ -6,6 +6,6 @@ import kotlinx.serialization.json.Json
 @Serializable
 class SATeacher:Entity{
     var user:EntityLink<User> = EntityLink<User>()
-    var ratings:EntityLinkList<SAGroupRating> = EntityLinkList<SAGroupRating>()
+    var ratings:ArrayList<EntityLink<SAGroupRating>> = ArrayList<EntityLink<SAGroupRating>>()
     constructor() {}
 }

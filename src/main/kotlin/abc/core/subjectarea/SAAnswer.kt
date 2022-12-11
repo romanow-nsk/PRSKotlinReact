@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 @Serializable
 class SAAnswer:Entity{
     var SAExamRating:EntityLink<SAExamRating> = EntityLink<SAExamRating>()
-    var messages:EntityLinkList<SAMessage> = EntityLinkList<SAMessage>()
+    var messages:ArrayList<EntityLink<SAMessage>> = ArrayList<EntityLink<SAMessage>>()
     var task:EntityLink<SATask> = EntityLink<SATask>()
     var rating:Int=0
     var state:Int=0

@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 @Serializable
 class SAExamRule:Entity{
     var SADiscipline:EntityLink<SADiscipline> = EntityLink<SADiscipline>()
-    var themes:EntityLinkList<SATheme> = EntityLinkList<SATheme>()
+    //var themes:ArrayList<EntityLink<SATheme> = ArrayList<EntityLink<SATheme>()
     var minimalRating:Int=0
     var examOwnRating:Int=0
     var examDuration:Int=0

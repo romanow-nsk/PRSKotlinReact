@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 class SATeam:Entity{
     var SAGroupRating:EntityLink<SAGroupRating> = EntityLink<SAGroupRating>()
     var teamNum:Int=0
-    var students:EntityLinkList<SAStudent> = EntityLinkList<SAStudent>()
+    var students:ArrayList<EntityLink<SAStudent>> = ArrayList<EntityLink<SAStudent>>()
     var name:String=""
     var comment:String=""
     constructor() {}

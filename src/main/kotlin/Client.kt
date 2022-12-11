@@ -1,7 +1,4 @@
-import abc.core.subjectarea.RestAPIBase
-import abc.core.subjectarea.SADiscipline
-import abc.core.subjectarea.SAStudent
-import abc.core.subjectarea.User
+import abc.core.subjectarea.*
 import kotlinx.browser.document
 import kotlinx.browser.window
 import react.create
@@ -40,7 +37,6 @@ suspend fun main(args: Array<String>) {
     else {
         token = userPair.data!!.sessionToken
         val format = Json { ignoreUnknownKeys = true }
-        /*
         var list = api.getEntityList(token,"User",0,0)
         for (vv in list.data!!){
             var user2 = format.decodeFromString<User>(vv.jsonObject)
@@ -51,14 +47,21 @@ suspend fun main(args: Array<String>) {
             var saStudent = format.decodeFromString<SAStudent>(vv.jsonObject)
             out += "GroupId="+saStudent.SAGroup.oid+ " usetId="+saStudent.User.oid+"\n"
             }
-         */
+        var list4 = api.getEntityList(token,"SAGroup",0,2)
+        for (vv in list4.data!!){
+            out+= vv.className+" "+vv.jsonObject+" "
+            var group = format.decodeFromString<SAGroup>(vv.jsonObject)
+            out += "Студентов="+group.students.size + " Группа=" +group.name+" "
+            for (student in group.students)
+                out+="id="+student.User.oid+" ";
+            }
         var list3 = api.getEntityList(token,"SADiscipline",0,2)
         for (vv in list3.data!!){
             out+= vv.className+" "+vv.jsonObject+" "
-            //var disc = format.decodeFromString<SADiscipline>(vv.jsonObject)
-            //out += "Темы="+disc.themes.size + " Уч.единицы=" +disc.units.size+"\n"
-            //for (theme in disc.themes)
-            //    out+=theme.name+" вопросов "+theme.tasks.size+"\n";
+            var disc = format.decodeFromString<SADiscipline>(vv.jsonObject)
+            out += "Темы="+disc.themes.size + " Уч.единицы=" +disc.units.size+"\n"
+            for (theme in disc.themes)
+                out+=theme.name+" вопросов "+theme.tasks.size+" ";
             }
         }
     val welcome = Welcome.create {
